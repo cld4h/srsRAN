@@ -10,6 +10,7 @@
 #include "relay_metrics_interface.h"
 #include "srslte/common/buffer_pool.h"
 #include "srslte/common/log_filter.h"
+#include "srslte/radio/radio.h"
 
 namespace srsrelay{
     
@@ -24,6 +25,8 @@ typedef struct {
 } log_args_t;
 
 typedef struct {
+  srslte::rf_args_t rf;
+
   log_args_t        log;
 } all_args_t;
 
