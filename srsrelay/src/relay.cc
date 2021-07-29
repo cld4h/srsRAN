@@ -27,22 +27,39 @@ int relay::init(const all_args_t& args_, srslte::logger* logger_)
   log.set_level(srslte::LOG_LEVEL_DEBUG);
   log.info("%s", get_build_string().c_str());
 
-  std::unique_ptr<srsrelay::phy> lte_phy = std::unique_ptr<srsrelay::phy>(new srsrelay::phy(logger));
-  if (!lte_phy) {
+  std::unique_ptr<srsrelay::phy> ue_phy = std::unique_ptr<srsrelay::phy>(new srsrelay::phy(logger));
+  if (!ue_phy) {
     srslte::console("Error creating LTE PHY instance.\n");
     return SRSLTE_ERROR;
   }
 
-  log.debug("LTE PHY instance created!");
+  std::unique_ptr<srsrelay::phy> enb_phy = std::unique_ptr<srsrelay::phy>(new srsrelay::phy(logger));
+  if (!enb_phy) {
+    srslte::console("Error creating LTE PHY instance.\n");
+    return SRSLTE_ERROR;
+  }
 
-  std::unique_ptr<srslte::radio> lte_radio = std::unique_ptr<srslte::radio>(new srslte::radio(logger));
-  if (!lte_radio) {
+  log.debug("PHY instances of ue & enb created!");
+
+  std::unique_ptr<srslte::radio> ue_radio = std::unique_ptr<srslte::radio>(new srslte::radio(logger));
+  if (!ue_radio) {
+    srslte::console("Error creating radio multi instance.\n");
+    return SRSLTE_ERROR;
+  }
+
+  std::unique_ptr<srslte::radio> enb_radio = std::unique_ptr<srslte::radio>(new srslte::radio(logger));
+  if (!enb_radio) {
     srslte::console("Error creating radio multi instance.\n");
     return SRSLTE_ERROR;
   }
 
   // init layers
-  if (lte_radio->init(args.rf, lte_phy.get())) {
+  if (ue_radio->init(args.ue_rf, ue_phy.get())) {
+    srslte::console("Error initializing radio.\n");
+    return SRSLTE_ERROR;
+  }
+
+  if (enb_radio->init(args.enb_rf, enb_phy.get())) {
     srslte::console("Error initializing radio.\n");
     return SRSLTE_ERROR;
   }

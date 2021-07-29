@@ -25,7 +25,8 @@ typedef struct {
 } log_args_t;
 
 typedef struct {
-  srslte::rf_args_t rf;
+  srslte::rf_args_t ue_rf;
+  srslte::rf_args_t enb_rf;
 
   log_args_t        log;
 } all_args_t;
