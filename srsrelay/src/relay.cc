@@ -4,6 +4,8 @@
 #include "srslte/common/logger.h"
 #include "srslte/build_info.h"
 #include "srsrelay/hdr/phy.h"
+#include "srsue/hdr/phy/phy.h"
+#include "srsenb/hdr/phy/phy.h"
 
 using namespace srslte;
 
@@ -27,13 +29,13 @@ int relay::init(const all_args_t& args_, srslte::logger* logger_)
   log.set_level(srslte::LOG_LEVEL_DEBUG);
   log.info("%s", get_build_string().c_str());
 
-  std::unique_ptr<srsrelay::phy> ue_phy = std::unique_ptr<srsrelay::phy>(new srsrelay::phy(logger));
+  std::unique_ptr<srsue::phy> ue_phy = std::unique_ptr<srsue::phy>(new srsue::phy(logger));
   if (!ue_phy) {
     srslte::console("Error creating LTE PHY instance.\n");
     return SRSLTE_ERROR;
   }
 
-  std::unique_ptr<srsrelay::phy> enb_phy = std::unique_ptr<srsrelay::phy>(new srsrelay::phy(logger));
+  std::unique_ptr<srsenb::phy> enb_phy = std::unique_ptr<srsenb::phy>(new srsenb::phy(logger));
   if (!enb_phy) {
     srslte::console("Error creating LTE PHY instance.\n");
     return SRSLTE_ERROR;

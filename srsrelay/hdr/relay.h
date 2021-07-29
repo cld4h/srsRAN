@@ -11,6 +11,8 @@
 #include "srslte/common/buffer_pool.h"
 #include "srslte/common/log_filter.h"
 #include "srslte/radio/radio.h"
+#include "srsenb/hdr/enb.h"
+#include "srsue/hdr/ue.h"
 
 namespace srsrelay{
     
@@ -27,6 +29,10 @@ typedef struct {
 typedef struct {
   srslte::rf_args_t ue_rf;
   srslte::rf_args_t enb_rf;
+  srsue::phy_args_t ue_phy;
+  srsenb::phy_args_t enb_phy;
+  srsue::stack_args_t ue_stack;
+  srsenb::stack_args_t enb_stack;
 
   log_args_t        log;
 } all_args_t;
