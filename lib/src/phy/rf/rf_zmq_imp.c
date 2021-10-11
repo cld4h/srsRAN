@@ -591,7 +591,7 @@ int rf_zmq_recv_with_time(void* h, void* data, uint32_t nsamples, bool blocking,
 }
 
 int rf_zmq_recv_with_time_multi(void*    h,
-                                void*    data[4],
+                                void**   data,//void* data[4]
                                 uint32_t nsamples,
                                 bool     blocking,
                                 time_t*  secs,

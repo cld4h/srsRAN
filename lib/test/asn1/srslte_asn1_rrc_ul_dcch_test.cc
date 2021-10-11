@@ -74,7 +74,7 @@ int rrc_ue_cap_info_test(srslte::mac_pcap* pcap)
   for (uint32_t i = 0; i < args.nof_supported_bands; i++) {
     cap.rf_params.supported_band_list_eutra[i].band_eutra  = args.supported_bands[i];
     cap.rf_params.supported_band_list_eutra[i].half_duplex = false;
-    cap.meas_params.band_list_eutra[i].inter_freq_band_list.resize(1);
+    cap.meas_params.band_list_eutra[i].inter_freq_band_list.resize(2);
     cap.meas_params.band_list_eutra[i].inter_freq_band_list[0].inter_freq_need_for_gaps = true;
   }
 
@@ -145,7 +145,7 @@ int pack_fail_test()
   for (uint32_t i = 0; i < args.nof_supported_bands; i++) {
     cap.rf_params.supported_band_list_eutra[i].band_eutra  = args.supported_bands[i];
     cap.rf_params.supported_band_list_eutra[i].half_duplex = false;
-    cap.meas_params.band_list_eutra[i].inter_freq_band_list.resize(1);
+    cap.meas_params.band_list_eutra[i].inter_freq_band_list.resize(64);
     cap.meas_params.band_list_eutra[i].inter_freq_band_list[0].inter_freq_need_for_gaps = true;
   }
 

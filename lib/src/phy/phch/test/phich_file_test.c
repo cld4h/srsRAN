@@ -48,7 +48,7 @@ int numsubframe      = 0;
 FILE* fmatlab = NULL;
 
 srslte_filesource_t   fsrc;
-cf_t *                input_buffer, *fft_buffer[SRSLTE_MAX_CODEWORDS];
+cf_t *                input_buffer, *fft_buffer[SRSLTE_MAX_PORTS];
 srslte_phich_t        phich;
 srslte_regs_t         regs;
 srslte_ofdm_t         fft;

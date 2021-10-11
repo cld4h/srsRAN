@@ -48,7 +48,7 @@ public:
     log_str(const char* msg_ = nullptr, uint32_t size_ = 0)
     {
       size = size_ ? size_ : preallocated_log_str_size;
-      msg  = new char[size];
+      msg  = new char[size+1];
       if (msg_) {
         strncpy(msg, msg_, size);
       } else {

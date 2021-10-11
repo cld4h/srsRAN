@@ -222,7 +222,7 @@ bool s1ap_mngmt_proc::send_s1_setup_response(s1ap_args_t s1ap_args, struct sctp_
   serv_gummei.served_group_ids.resize(1);
   serv_gummei.served_group_ids[0].from_number(htons(s1ap_args.mme_group));
 
-  serv_gummei.served_mmecs.resize(1); // Only one MMEC served
+  serv_gummei.served_mmecs.resize(2); // Only one MMEC served
   serv_gummei.served_mmecs[0].from_number(s1ap_args.mme_code);
 
   s1_resp.relative_mme_capacity.value = 255;

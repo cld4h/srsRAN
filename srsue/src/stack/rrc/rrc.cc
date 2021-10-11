@@ -1685,7 +1685,7 @@ void rrc::handle_ue_capability_enquiry(const ue_cap_enquiry_s& enquiry)
       for (uint32_t k = 0; k < args.nof_supported_bands; k++) {
         cap.rf_params.supported_band_list_eutra[k].band_eutra  = args.supported_bands[k];
         cap.rf_params.supported_band_list_eutra[k].half_duplex = false;
-        cap.meas_params.band_list_eutra[k].inter_freq_band_list.resize(1);
+        cap.meas_params.band_list_eutra[k].inter_freq_band_list.resize(2);
         cap.meas_params.band_list_eutra[k].inter_freq_band_list[0].inter_freq_need_for_gaps = true;
       }
 

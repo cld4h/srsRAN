@@ -786,7 +786,7 @@ void rf_soapy_get_time(void* h, time_t* secs, double* frac_secs)
 
 // TODO: add multi-channel support
 int rf_soapy_recv_with_time_multi(void*    h,
-                                  void*    data[SRSLTE_MAX_PORTS],
+                                  void**   data,
                                   uint32_t nsamples,
                                   bool     blocking,
                                   time_t*  secs,

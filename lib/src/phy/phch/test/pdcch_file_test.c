@@ -48,7 +48,7 @@ int      max_frames = 10;
 srslte_dci_format_t   dci_format = SRSLTE_DCI_FORMAT1A;
 srslte_filesource_t   fsrc;
 srslte_pdcch_t        pdcch;
-cf_t *                input_buffer, *fft_buffer[SRSLTE_MAX_CODEWORDS];
+cf_t *                input_buffer, *fft_buffer[SRSLTE_MAX_PORTS];
 srslte_regs_t         regs;
 srslte_ofdm_t         fft;
 srslte_chest_dl_t     chest;

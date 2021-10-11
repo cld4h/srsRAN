@@ -48,7 +48,7 @@ uint8_t bch_payload_file[SRSLTE_BCH_PAYLOAD_LEN] = {0, 1, 1, 0, 1, 0, 0, 0, 0, 0
 #define FLEN (10 * SRSLTE_SF_LEN(srslte_symbol_sz(cell.nof_prb)))
 
 srslte_filesource_t   fsrc;
-cf_t *                input_buffer, *fft_buffer[SRSLTE_MAX_CODEWORDS];
+cf_t *                input_buffer, *fft_buffer[SRSLTE_MAX_PORTS];
 srslte_pbch_t         pbch;
 srslte_ofdm_t         fft;
 srslte_chest_dl_t     chest;

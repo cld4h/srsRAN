@@ -681,7 +681,7 @@ bool rrc::ue::rrc_mobility::start_ho_preparation(uint32_t target_eci,
     capitem.rf_params.supported_band_list_eutra[0].half_duplex = false;
     capitem.meas_params.band_list_eutra.resize(1);
     capitem.meas_params.band_list_eutra[0].inter_rat_band_list_present = false;
-    capitem.meas_params.band_list_eutra[0].inter_freq_band_list.resize(1);
+    capitem.meas_params.band_list_eutra[0].inter_freq_band_list.resize(2);
     capitem.meas_params.band_list_eutra[0].inter_freq_band_list[0].inter_freq_need_for_gaps = false;
     capitem.feature_group_inds_present                                                      = true;
     capitem.feature_group_inds.from_number(0xe6041000); // 0x5d0ffc80); // 0xe6041c00;
