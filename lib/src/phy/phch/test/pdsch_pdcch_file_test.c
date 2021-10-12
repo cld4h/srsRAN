@@ -177,8 +177,7 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-//  uint8_t* data[] = {malloc(100000)};
-  uint8_t* data[SRSLTE_MAX_CODEWORDS];
+  uint8_t* data[] = {malloc(100000),malloc(100000)};
   if (!data[0]) {
     perror("malloc");
     exit(-1);
