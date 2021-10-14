@@ -749,7 +749,7 @@ int srslte_ue_dl_decode_pdsch(srslte_ue_dl_t*     q,
 int srslte_ue_dl_decode_pmch(srslte_ue_dl_t*     q,
                              srslte_dl_sf_cfg_t* sf,
                              srslte_pmch_cfg_t*  pmch_cfg,
-                             srslte_pdsch_res_t*  data)//srslte_pdsch_res_t  data[SRSLTE_MAX_CODEWORDS]
+                             srslte_pdsch_res_t  data[SRSLTE_MAX_CODEWORDS])//srslte_pdsch_res_t  data[SRSLTE_MAX_CODEWORDS]
 {
   return srslte_pmch_decode(&q->pmch, sf, pmch_cfg, &q->chest_res, q->sf_symbols, &data[0]);
 }

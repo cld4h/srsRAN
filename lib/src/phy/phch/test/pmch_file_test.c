@@ -217,9 +217,12 @@ int main(int argc, char** argv)
   SRSLTE_DCI_TB_DISABLE(dci.tb[1]);
   srslte_ra_dl_dci_to_grant(&cell, &dl_sf, SRSLTE_TM1, false, &dci, &pmch_cfg.pdsch_cfg.grant);
 
-  srslte_pdsch_res_t pdsch_res;
-  pdsch_res.payload = data;
-  ret               = srslte_ue_dl_decode_pmch(&ue_dl, &dl_sf, &pmch_cfg, &pdsch_res);
+  srslte_pdsch_res_t pdsch_res = {};
+  pdsch_res.payload            = data;
+
+  srslte_pdsch_res_t pdsch_res_vec[SRSLTE_MAX_CODEWORDS];
+  pdsch_res_vec[0] = pdsch_res;
+  ret               = srslte_ue_dl_decode_pmch(&ue_dl, &dl_sf, &pmch_cfg, pdsch_res_vec);
   if (pdsch_res.crc == 1) {
     printf("PMCH Decoded OK!\n");
   } else if (pdsch_res.crc == 0) {
