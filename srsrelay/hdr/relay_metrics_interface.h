@@ -1,7 +1,7 @@
 #ifndef SRSRELAY_RELAY_METRICS_INTERFACE_H
 #define SRSRELAY_RELAY_METRICS_INTERFACE_H
 
-#include "srslte/common/metrics_hub.h"
+#include "srsran/common/metrics_hub.h"
 
 namespace srsrelay {
 
@@ -10,7 +10,7 @@ typedef struct {
 } relay_metrics_t;
 
 // RELAY interface
-class relay_metrics_interface : public srslte::metrics_interface<relay_metrics_t>
+class relay_metrics_interface : public srsran::metrics_interface<relay_metrics_t>
 
 {
 public:

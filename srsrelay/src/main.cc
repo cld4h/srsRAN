@@ -1,15 +1,15 @@
 #include <iostream>
 #include <boost/program_options.hpp>
 #include <boost/program_options/parsers.hpp>
-#include "srslte/common/common_helper.h"
-#include "srslte/common/config_file.h"
+#include "srsran/common/common_helper.h"
+#include "srsran/common/config_file.h"
 #include "srsrelay/hdr/relay.h"
-#include "srslte/common/signal_handler.h"
-#include "srslte/common/crash_handler.h" //srslte_debug_handle_crash
-#include "srslte/common/logger_srslog_wrapper.h"
-#include "srslte/common/logmap.h"
-#include "srslte/srslog/srslog.h"
-#include "srslte/config.h"
+#include "srsran/common/signal_handler.h"
+#include "srsran/common/crash_handler.h" //srsran_debug_handle_crash
+#include "srsran/common/logger_srslog_wrapper.h"
+#include "srsran/common/logmap.h"
+#include "srsran/srslog/srslog.h"
+#include "srsran/config.h"
 
 using namespace std;
 using namespace srsrelay;
@@ -143,8 +143,8 @@ static int parse_args(all_args_t* args, int argc, char* argv[])
 
   // print version number and exit
   if (vm.count("version")) {
-    cout << "Version " << srslte_get_version_major() << "." << srslte_get_version_minor() << "."
-         << srslte_get_version_patch() << endl;
+    cout << "Version " << srsran_get_version_major() << "." << srsran_get_version_minor() << "."
+         << srsran_get_version_patch() << endl;
     exit(SRSLTE_SUCCESS);
   }
 
@@ -177,8 +177,8 @@ static int parse_args(all_args_t* args, int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-  srslte_register_signal_handler();
-  srslte_debug_handle_crash(argc, argv);
+  srsran_register_signal_handler();
+  srsran_debug_handle_crash(argc, argv);
 
   all_args_t args = {};
 
@@ -199,7 +199,7 @@ int main(int argc, char* argv[])
     return SRSLTE_ERROR;
   }
 
-  srslte::srslog_wrapper log_wrapper(*chan);
+  srsran::srslog_wrapper log_wrapper(*chan);
 
   // Start the log backend.
   srslog::init();
@@ -209,8 +209,8 @@ int main(int argc, char* argv[])
     return SRSLTE_ERROR;
   }
 
-  srslte::logmap::set_default_logger(&log_wrapper);
-  srslte::log_args(argc, argv, "RELAY");
+  srsran::logmap::set_default_logger(&log_wrapper);
+  srsran::log_args(argc, argv, "RELAY");
 
   srsrelay::relay relay;
   relay.init(args,&log_wrapper);
